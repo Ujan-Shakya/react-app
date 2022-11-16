@@ -1,15 +1,18 @@
-name: learn-github-actions
-run-name: ${{ github.actor }} is learning GitHub Actions
+name: deploy test
+run-name: deploy test by ${{ github.actor }}
 on: [push]
 jobs:
-  check-bats-version:
+  ssh-test:
+    name: deploy
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-      - run: npm install -g bats
-      - run: bats -v
-      - run: node -v
-      - run: echo $USER
+    - name: testing ssh
+      uses: appleboy/ssh-action@master
+      with:
+        host: 23.23.146.36
+        username: ubuntu
+        key: ${{ AWS_KEY_WOLO }}
+        port: 22
+        script: |
+           pwd 
+           ls
