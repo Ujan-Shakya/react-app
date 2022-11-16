@@ -19,6 +19,5 @@ jobs:
 
      - name: testig 
        uses: actions/checkout@v3
-       with:
-         command: pwd
+       run: pwd
 
