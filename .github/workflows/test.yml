@@ -22,7 +22,5 @@ jobs:
 
      - name: use script command
        run : |
-         pwd
-         ls
-         cd .github/
-         ls 
+         cd .github/workflows/
+         cat test.yml
