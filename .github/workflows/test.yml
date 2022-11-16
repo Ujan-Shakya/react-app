@@ -11,7 +11,7 @@ jobs:
       with:
         host: 23.23.146.36
         username: ubuntu
-        key: ${{ AWS_KEY_WOLO }}
+        key: ${{ secrets.AWS_KEY_WOLO }}
         port: 22
         script: |
            pwd 
