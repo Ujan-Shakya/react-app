@@ -14,13 +14,23 @@ jobs:
  #        key: ${{ secrets.AWS_KEY_WOLO }}
  #        port: 22
  #        script: whoami
-       - name: Testing SSH
-         uses: fifsky/ssh-action@master
-         with:
-           host: 23.23.146.36
-           user: root
-           key: ${{ secrets.AWS_KEY_WOLO }}
-           command: |
-              pwd
-              cd /opt
-              ls
+ #       - name: Testing SSH
+ #         uses: fifsky/ssh-action@master
+ #         with:
+ #           host: 23.23.146.36
+ #           user: root
+ #           key: ${{ secrets.AWS_KEY_WOLO }}
+ #           command: |
+ #              pwd
+ #              cd /opt
+ #              ls
+     - name: Testing SSh
+       uses: garygrossgarten/github-action-ssh@release
+       with:
+         command: |
+            pwd
+            cd /opt
+            ls -lah
+         host: 23.23.146.36
+         username: ubuntu
+         privateKey: ${{ secrets.AWS_KEY_WOLO }}
