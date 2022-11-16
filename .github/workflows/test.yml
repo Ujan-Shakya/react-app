@@ -1,5 +1,5 @@
 name: deploy test
-run-name: deploy test by ${{ github.actor }}
+run-name: Pipeline started by ${{ github.actor }}
 on: [push]
 jobs:
   ssh-test:
@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Testing ssh
-      uses: appleboy/ssh-action@master
+      uses: appleboy/ssh-action@v0.1.5
       with:
         host: 23.23.146.36
         username: root
