@@ -19,8 +19,7 @@ jobs:
 
      - name: check out repository code 
        uses: actions/checkout@v3
-
-     - name: test commands
-       script: |
-           pwd 
-            ls
+       with:
+          script: |
+              pwd 
+              ls
