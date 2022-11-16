@@ -19,7 +19,7 @@ jobs:
          with:
            host: 23.23.146.36
            user: root
-           key: ${{ secrets.AWS_KEY_WOL }}
+           key: ${{ secrets.AWS_KEY_WOLO }}
            command: |
               pwd
               cd /opt
