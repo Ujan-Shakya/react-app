@@ -1,8 +1,11 @@
 name: 'write commands'
+runs-on: ubuntu-latest
 description: 'Executing commands'
+
 inputs:
   script:
     description: 'execute commands'
+
 branding:
   icon: 'terminal'
   color: 'gray-dark'
