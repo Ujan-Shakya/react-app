@@ -6,31 +6,19 @@ jobs:
     name: deploy
     runs-on: ubuntu-latest
     steps:
- #    - name: Testing ssh
- #      uses: appleboy/ssh-action@v0.1.5
- #      with:
- #        host: 23.23.146.36
- #        username: root
- #        key: ${{ secrets.AWS_KEY_WOLO }}
- #        port: 22
- #        script: whoami
- #       - name: Testing SSH
- #         uses: fifsky/ssh-action@master
- #         with:
- #           host: 23.23.146.36
- #           user: root
- #           key: ${{ secrets.AWS_KEY_WOLO }}
- #           command: |
- #              pwd
- #              cd /opt
- #              ls
-     - name: Testing SSh
-       uses: garygrossgarten/github-action-ssh@release
+ #     - name: Testing SSh
+ #       uses: garygrossgarten/github-action-ssh@release
+ #       with:
+ #         command: |
+ #            pwd
+ #            cd /opt
+ #            ls -lah
+ #         host: 23.23.146.36
+ #         username: ubuntu
+ #         privateKey: ${{ secrets.AWS_KEY_WOLO }}
+
+     - name: testig 
+       uses: actions/checkout@v3
        with:
-         command: |
-            pwd
-            cd /opt
-            ls -lah
-         host: 23.23.146.36
-         username: ubuntu
-         privateKey: ${{ secrets.AWS_KEY_WOLO }}
+         command: pwd
+
