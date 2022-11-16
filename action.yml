@@ -1,10 +1,11 @@
 name: 'write commands'
-runs-on: ubuntu-latest
 description: 'Executing commands'
 
 inputs:
   script:
     description: 'execute commands'
+runs:
+  using: "composite"
 
 branding:
   icon: 'terminal'
