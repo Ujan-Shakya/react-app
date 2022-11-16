@@ -18,6 +18,6 @@ jobs:
  #         privateKey: ${{ secrets.AWS_KEY_WOLO }}
 
      - name: testig 
-       uses: actions/checkout@v3
-       run: pwd
+     - uses: actions/checkout@v3
+     - run: pwd
 
