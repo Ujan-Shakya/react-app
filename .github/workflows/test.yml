@@ -14,5 +14,4 @@ jobs:
         key: ${{ secrets.AWS_KEY_WOLO }}
         port: 22
         script: |
-           apt update
            lsb_release -a
