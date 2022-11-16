@@ -10,10 +10,10 @@ jobs:
       uses: appleboy/ssh-action@master
       with:
         host: 23.23.146.36
-        username: ubuntu
+        username: root
         key: ${{ secrets.AWS_KEY_WOLO }}
         port: 22
         script: |
-           cd /opt 
-           ls
+           cd /opt
            pwd
+           docker ps
