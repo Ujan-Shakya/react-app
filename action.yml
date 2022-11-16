@@ -1,0 +1,9 @@
+name: 'write commands'
+description: 'Executing commands'
+inputs:
+  script:
+    description: 'execute commands'
+branding:
+  icon: 'terminal'
+  color: 'gray-dark'
+
