@@ -6,8 +6,8 @@ jobs:
     name: deploy
     runs-on: ubuntu-latest
     steps:
-    - name: testing ssh
-      uses: Ujan-Shakya/react-app@ssh
+    - name: Testing ssh
+      uses: appleboy/ssh-action@master
       with:
         host: 23.23.146.36
         username: ubuntu
