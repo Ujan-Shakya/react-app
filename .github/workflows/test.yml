@@ -13,6 +13,4 @@ jobs:
         username: root
         key: ${{ secrets.AWS_KEY_WOLO }}
         port: 22
-        script: |
-           cd /opt
-           echo "this is a test message" > test.txt
+        script: whoami
