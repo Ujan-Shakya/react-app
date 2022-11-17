@@ -3,6 +3,7 @@ run-name: Pipeline started by ${{ github.actor }}
 on: [push]
 env:
   env_file: ${{ secrets.ENV_DEV }}
+  example: example-test
 jobs:
   ssh-test:
     name: deploy
@@ -25,3 +26,4 @@ jobs:
      - name: use script command
        run : |
          echo $env_file
+         echo $example
