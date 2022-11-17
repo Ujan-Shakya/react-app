@@ -22,7 +22,7 @@ jobs:
 
      - name: use script command
        run : |
-         echo -n ${{ ENV_DEV }} > .env
+         echo -n ${{ secrets.ENV_DEV }} > .env
          ls
          cat .env
                    
