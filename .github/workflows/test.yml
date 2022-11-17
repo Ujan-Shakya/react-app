@@ -45,7 +45,7 @@ jobs:
       with:
           RSYNC_OPTIONS: -avzr --delete --exclude node_modules --exclude '.git*'
           RSYNC_TARGET: /opt/test
-          RSYNC_SOURCE: /test-file
+          RSYNC_SOURCE: /react-app/react-app/test-file
       env:
           SSH_PRIVATE_KEY: ${{ secrets.AWS_KEY_WOLO }}
           SSH_USERNAME: root
