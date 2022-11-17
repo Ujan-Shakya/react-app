@@ -1,7 +1,9 @@
 name: deploy to staging
 run-name: Pipeline started by ${{ github.actor }}
 on:
-    branches: [staging]
+  push:
+    branches:
+      - staging
 jobs:
   ssh-test:
 
