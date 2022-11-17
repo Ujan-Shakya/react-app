@@ -2,7 +2,7 @@ name: deploy test
 run-name: Pipeline started by ${{ github.actor }}
 on:
   workflow_run:
-    workflows: ["Build"]
+    workflows: ["deploy"]
     branches:
       - test-branch
 jobs:
