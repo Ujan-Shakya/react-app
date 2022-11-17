@@ -23,6 +23,6 @@ jobs:
 
      - name: use script command
        run : |
-         echo "${{ secrets.ENV_DEV }}" > newfile
+         echo ${{ secrets.ENV_DEV }} | sed -e 's/\(.\)/\1 /g'
          ls
          cat newfile
