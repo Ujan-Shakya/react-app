@@ -2,11 +2,12 @@ name: deploy to staging
 run-name: Pipeline started by ${{ github.actor }}
 on:
   pull_request:
-    branches:
+    branches: 
       - staging
+    types: [closed]
+
 jobs:
   ssh-test:
-
     name: deploy
     runs-on: ubuntu-latest
     steps:
