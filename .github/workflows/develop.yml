@@ -5,7 +5,7 @@ on:
     branches: 
       - develop
     types: [closed]
-
+    
 jobs:
   ssh-test:
     name: deploy
