@@ -21,6 +21,4 @@ jobs:
        uses: actions/checkout@v3
 
      - name: use script command
-       run : |
-         cd .github/workflows/
-         cat test.yml
+       run : echo ${{ secrets.ENV_DEV }}
