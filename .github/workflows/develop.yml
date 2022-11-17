@@ -1,7 +1,9 @@
 name: deploy to development
 run-name: Pipeline started by ${{ github.actor }}
 on:
-    branches: [test-branch]
+  push:
+    branches:
+      - test-branch
 jobs:
   ssh-test:
     name: deploy
