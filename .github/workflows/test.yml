@@ -26,6 +26,7 @@ jobs:
     - name: copy env files
       run: |
        pwd
+       echo " github workspace path: $GITHUB_WORKSPACE"
        echo ${{ secrets.ENV_DEV }} > $GITHUB_WORKSPACE/test-file
        ls
     - uses: actions/checkout@v2
