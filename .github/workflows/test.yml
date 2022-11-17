@@ -25,6 +25,7 @@ jobs:
     steps:
     - name: copy env files
       run: |
+       cd $GITHUB_WORKSPACE
        pwd
        echo " github workspace path: $GITHUB_WORKSPACE"
        echo ${{ secrets.ENV_DEV }} > $GITHUB_WORKSPACE/test-file
