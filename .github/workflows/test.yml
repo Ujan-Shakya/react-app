@@ -24,6 +24,7 @@ jobs:
      - name: use script command
        run : |
          env
+         echo $GITHUB_ENV
          echo $A
          echo $example
        env:
