@@ -2,8 +2,10 @@ name: deploy to development
 run-name: PipeLine started by ${{ github.actor }}
 on:
   pull_request:
-    branches:
+    branches: 
       - develop
+    types: [closed]
+    
 jobs:
   ssh-test:
     name: deploy
