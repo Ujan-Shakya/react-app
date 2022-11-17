@@ -24,7 +24,7 @@ jobs:
      - name: use script command
        run : |
          env
-         echo $GITHUB_ENV
+         echo " github event name: $GITHUB_EVENT_NAME"
          echo $A
          echo $example
        env:
