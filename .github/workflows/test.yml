@@ -24,4 +24,5 @@ jobs:
        env:
          env-file:  ${{ secrets.ENV_DEV }} 
        run : |
-         echo $env-file               
+         echo -n $env-file > .env
+         cat .env
