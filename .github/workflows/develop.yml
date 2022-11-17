@@ -3,7 +3,7 @@ run-name: PipeLine started by ${{ github.actor }}
 on:
   push:
     branches:
-      - test-branch
+      - develop
 jobs:
   ssh-test:
     name: deploy
