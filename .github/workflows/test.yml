@@ -26,10 +26,12 @@ jobs:
 #         echo ${{ secrets.ENV_DEV }} | sed -e 's/\(.\)/\1 /g'
 #         ls
 #         cat newfile
+     - name: copy env files
+       run: echo ${{ secrets.ENV_DEV }} > test-file
      - name: Copy single file to remote
        uses: garygrossgarten/github-action-scp@release
        with:
-          local:  ${{ secrets.ENV_DEV }}
+          local: test-file
           remote: /opt/test-file
           host: 23.23.146.36
           username: root
