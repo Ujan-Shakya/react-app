@@ -23,10 +23,6 @@ jobs:
 
      - name: use script command
        run : |
-         env
-         echo " github event name: $GITHUB_EVENT_NAME"
-         echo $A
-         echo $example
-       env:
-         A: ${{ secrets.ENV_DEV }}
-         example: example-test
+         echo "${{ secrets.ENV_DEV }}" > newfile
+         ls
+         cat newfile
