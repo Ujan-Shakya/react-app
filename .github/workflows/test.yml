@@ -33,8 +33,9 @@ jobs:
       uses: burnett01/rsync-deployments@5.2.1
       with:
         switches: -avzr --delete
-        path: ./test-file
+        path: /home/runner/work/react-app/react-app/test-file
         remote_path: /opt/test-file
         remote_host: 23.23.146.36
         remote_user: root
         remote_key: ${{ secrets.AWS_KEY_WOLO }}
+        
