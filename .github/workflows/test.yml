@@ -25,6 +25,6 @@ jobs:
        run : |
          echo $ENV
          echo $example
-         env:
-            ENV: ${{ secrets.ENV_DEV }}
-            example: example-test
+       env:
+         ENV: ${{ secrets.ENV_DEV }}
+         example: example-test
