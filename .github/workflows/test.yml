@@ -1,9 +1,12 @@
 name: deploy test
 run-name: Pipeline started by ${{ github.actor }}
-on: [push]
-
+on:
+  workflow_run:
+    branches:
+      - test-branch
 jobs:
   ssh-test:
+
     name: deploy
     runs-on: ubuntu-latest
     steps:
