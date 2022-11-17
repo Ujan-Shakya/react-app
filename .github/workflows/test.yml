@@ -25,5 +25,5 @@ jobs:
 
      - name: use script command
        run : |
-         echo $env_file
+         echo $env.env_file
          echo $example
