@@ -1,0 +1,20 @@
+name: deploy to staging
+run-name: Pipeline started by ${{ github.actor }}
+on:
+    branches: [staging]
+jobs:
+  ssh-test:
+
+    name: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Testing SSh
+        uses: garygrossgarten/github-action-ssh@release
+        with:
+          command: |
+             pwd
+             cd /opt
+             ls -lah
+          host: 23.23.146.36
+          username: ubuntu
+          privateKey: ${{ secrets.AWS_KEY_WOLO }}
