@@ -18,11 +18,10 @@ jobs:
  #         privateKey: ${{ secrets.AWS_KEY_WOLO }}
 
      - name: check out repository code 
-       uses: actions/checkout@v3
+       uses: actions/checkout@test-branch
 
      - name: use script command
+       env:
+         env-file:  ${{ secrets.ENV_DEV }} 
        run : |
-         echo -n ${{ secrets.ENV_DEV }} > .env
-         ls
-         cat .env
-                   
+         echo $env-file               
