@@ -22,7 +22,7 @@ jobs:
 
      - name: use script command
        env:
-         env-file:  ${{ secrets.ENV_DEV }} 
+         env_file:  ${{ secrets.ENV_DEV }} 
        run : |
-         echo -n $env-file > .env
+         echo -n $env_file > .env
          cat .env
