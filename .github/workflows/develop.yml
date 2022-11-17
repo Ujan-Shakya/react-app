@@ -1,7 +1,7 @@
 name: deploy to development
 run-name: PipeLine started by ${{ github.actor }}
 on:
-  push:
+  pull_request:
     branches:
       - test-branch
 jobs:

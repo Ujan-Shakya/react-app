@@ -1,7 +1,7 @@
 name: deploy to staging
 run-name: Pipeline started by ${{ github.actor }}
 on:
-  push:
+  pull_request:
     branches:
       - staging
 jobs:
