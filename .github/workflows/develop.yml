@@ -1,5 +1,5 @@
 name: deploy to development
-run-name: Pipeline started by ${{ github.actor }}
+run-name: PipeLine started by ${{ github.actor }}
 on:
   push:
     branches:
