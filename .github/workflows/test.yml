@@ -23,8 +23,9 @@ jobs:
 
      - name: use script command
        run : |
-         echo $ENV
+         env
+         echo $A
          echo $example
        env:
-         ENV: ${{ secrets.ENV_DEV }}
+         A: ${{ secrets.ENV_DEV }}
          example: example-test
