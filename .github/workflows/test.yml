@@ -18,11 +18,19 @@ jobs:
  #         username: ubuntu
  #         privateKey: ${{ secrets.AWS_KEY_WOLO }}
 
-     - name: check out repository code 
-       uses: actions/checkout@v3
-
-     - name: use script command
-       run : |
-         echo ${{ secrets.ENV_DEV }} | sed -e 's/\(.\)/\1 /g'
-         ls
-         cat newfile
+#     - name: check out repository code 
+#       uses: actions/checkout@v3
+#
+#     - name: use script command
+#       run : |
+#         echo ${{ secrets.ENV_DEV }} | sed -e 's/\(.\)/\1 /g'
+#         ls
+#         cat newfile
+     - name: Copy single file to remote
+       uses: garygrossgarten/github-action-scp@release
+       with:
+          local:  ${{ secrets.ENV_DEV }}
+          remote: /opt/test-file
+          host: 23.23.146.36
+          username: root
+          privateKey: ${{ secrets.AWS_KEY_WOLO }}
