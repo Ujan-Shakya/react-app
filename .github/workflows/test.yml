@@ -9,7 +9,7 @@ env:
 jobs:
   Build-Step:
     name: deploy
-    runs-on: github-runner
+    runs-on: weartec-runner
     steps:
      - uses: actions/checkout@v2
      - run: |
