@@ -11,6 +11,8 @@ jobs:
     steps:
      - uses: actions/checkout@v2
      - run: |
+          whoami 
+          echo $USER
           echo ${{ env.GITHUB_REPOSITORY }}
           docker build -t ${{ env.GITHUB_REPOSITORY }}:latest -f Dockerfile-dev .
           docker images
