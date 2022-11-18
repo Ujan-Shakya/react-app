@@ -1,0 +1,11 @@
+FROM node:16.13.2-alpine
+
+WORKDIR /opt/wolo
+
+COPY package.json package-lock.json ./
+
+RUN npm ci --silent
+
+COPY . .
+
+CMD npm run start
