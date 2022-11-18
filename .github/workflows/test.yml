@@ -12,7 +12,7 @@ jobs:
      - uses: actions/checkout@v2
      - run: |
           echo ${{ env.GITHUB_REPOSITORY }}
-          docker  build -t ${{ env.GITHUB_REPOSITORY }}:latest -f Dockerfile-dev .
+          docker build -t ${{ env.GITHUB_REPOSITORY }}:latest -f Dockerfile-dev .
           docker images
  #
  #  Push-Step:
