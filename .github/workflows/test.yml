@@ -4,6 +4,8 @@ on: [push]
 
 env:
    GITHUB_REPOSITORY: ${{ github.repository }}
+   GITHUB_REF_NAME: ${{ github.ref_name }}
+
 jobs:
   Build-Step:
     name: deploy
@@ -13,16 +15,15 @@ jobs:
      - run: |
           sudo docker build -t ${{ env.GITHUB_REPOSITORY }}:latest -f Dockerfile-dev .
           sudo docker images
- #
- #  Push-Step:
- #    name: deploy
- #    runs-on: github-runner
- #    steps:
- #     - uses: actions/checkout@v2
- #     - run: |
- #        aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }} && aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
- #        aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin ${{ secrets.ECR_LOGIN_PASSWORD }}
- #        docker tag ${{ GITHUB_REPOSITORY }}:latest ${{ secrets.ECR_REPOSITORY_URL }}:${{ GITHUB_REF_NAME }}
- #        docker push ${{ secrets.ECR_REPOSITORY_URL }}:${{ GITHUB_REF_NAME }}
- #        docker image prune -f
- #
+
+  Push-Step:
+    name: deploy
+    runs-on: github-runner
+    steps:
+     - uses: actions/checkout@v2
+     - run: |
+        aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }} && aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin ${{ secrets.ECR_LOGIN_PASSWORD }}
+        docker tag ${{ env.GITHUB_REPOSITORY }}:latest ${{ secrets.ECR_REPOSITORY_URL }}:${{ env.GITHUB_REF_NAME }}
+        docker push ${{ secrets.ECR_REPOSITORY_URL }}:${{ env.GITHUB_REF_NAME }}
+        docker image prune -f
