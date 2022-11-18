@@ -3,7 +3,9 @@ run-name: PipeLine started by ${{ github.actor }}
 on: [push]
 
 env:
-   GITHUB_REPOSITORY: ${{ github_repository }}
+  resourceGroup1: ${GITHUB_RUN_ID}-${GITHUB_RUN_NUMBER}
+  resourceGroup2: ${{ github.run_id }}-${{ github.run_number }}
+
 jobs:
   Build-Step:
     name: deploy
@@ -11,9 +13,11 @@ jobs:
     steps:
      - uses: actions/checkout@v2
      - run: |
-         echo ${{ env.GITHUB_REPOSITORY }}
-         docker  build -t ${{ env.GITHUB_REPOSITORY }}:latest -f Dockerfile-dev .
-         docker images
+        echo ${{ env.resourceGroup1 }}
+        echo ${{ env.resourceGroup2 }}
+ #         echo ${{ env.GITHUB_REPOSITORY }}
+ #         docker  build -t ${{ env.GITHUB_REPOSITORY }}:latest -f Dockerfile-dev .
+ #         docker images
  #
  #  Push-Step:
  #    name: deploy
