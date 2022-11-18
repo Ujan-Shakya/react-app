@@ -1,52 +1,40 @@
 name: deploy to development
 run-name: PipeLine started by ${{ github.actor }}
-on: push
-
-#jobs:
-#  ssh-test:
-#    name: deploy
-#    runs-on: ubuntu-latest
-#    steps:
-#     - name: copy env files
-#       run: echo ${{ secrets.ENV_DEV }} > test-file
-#     - name: Copy single file to remote
-#       uses: garygrossgarten/github-action-scp@release
-#       with:
-#          local: test-file
-#          remote: /opt/test-file
-#          host: 23.23.146.36
-#          username: root
-#          privateKey: ${{ secrets.AWS_KEY_WOLO }}
+on:[push]
 
 jobs:
-#  deploy:
-#    name: rsync
-#    runs-on: ubuntu-latest
-#    steps:
-#    - name: copy env files
-#      run: echo ${{ secrets.ENV_DEV }} > test-file
-#    - uses: actions/checkout@v2
-#    - name: rsync deployment
-#      uses: burnett01/rsync-deployments@5.2.1
-#      with:
-#        switches: -avzr --delete --exclude="" --include="" --filter=""
-#        path: test-file
-#        remote_path: /opt/test-file
-#        remote_host: 23.23.146.36
-#        remote_user: root
-#        remote_key: ${{ secrets.AWS_KEY_WOLO }}
-#
-   ssh-test:
-       name: deploy
-       runs-on: weartec-runner
-       steps:
-         - name: Testing SSH
-           uses: garygrossgarten/github-action-ssh@release
-           with:
-             command: |
-                pwd
-                cd /opt
-                ls -lah
-             host: 23.23.146.36
-             username: ubuntu
-             privateKey: ${{ secrets.AWS_KEY_WOLO }}
+ #  Build-Step:
+ #    name: deploy
+ #    runs-on: github-runner
+ #    steps:
+ #     - uses: actions/checkout@v2
+ #     - run: docker build 
+ #
+ #  Push-Step:
+ #    name: deploy
+ #    runs-on: github-runner
+ #    steps:
+ #     - uses: actions/checkout@v2
+ #     - run: |
+ #        aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }} && aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+ #        aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin ${{ secrets.ECR_LOGIN_PASSWORD }}
+ #        docker tag ${{ GITHUB_REPOSITORY }}:latest ${{ secrets.ECR_REPOSITORY_URL }}:${{ GITHUB_REF_NAME }}
+ #        docker push ${{ secrets.ECR_REPOSITORY_URL }}:${{ GITHUB_REF_NAME }}
+ #        docker image prune -f
+ #
+   Deploy-dev:
+    name: deploy
+    runs-on: github-runner
+    steps:
+     - name: copy env files
+       run: | 
+         whoami
+         echo ${{ secrets.ENV_DEV }} > test-filea
+     - name: Copy single file to remote
+       uses: garygrossgarten/github-action-scp@release
+       with:
+          local: test-file
+          remote: /opt/test-file
+          host: 23.23.146.36
+          username: root
+          privateKey: ${{ secrets.AWS_KEY_WOLO }}
