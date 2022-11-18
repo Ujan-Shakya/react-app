@@ -3,12 +3,14 @@ run-name: PipeLine started by ${{ github.actor }}
 on: [push]
 
 jobs:
- #  Build-Step:
- #    name: deploy
- #    runs-on: github-runner
- #    steps:
- #     - uses: actions/checkout@v2
- #     - run: docker build 
+  Build-Step:
+    name: deploy
+    runs-on: github-runner
+    steps:
+     - uses: actions/checkout@v2
+     - run: |
+         docker  build -t ${{ GITHUB_REPOSITORY }}:latest -f Dockerfile-dev .
+         docker images
  #
  #  Push-Step:
  #    name: deploy
@@ -22,19 +24,20 @@ jobs:
  #        docker push ${{ secrets.ECR_REPOSITORY_URL }}:${{ GITHUB_REF_NAME }}
  #        docker image prune -f
  #
-   Deploy-dev:
-    name: deploy
-    runs-on: weartec-runner
-    steps:
-     - name: copy env files
-       run: | 
-         whoami
-         echo ${{ secrets.ENV_DEV }} > test-filea
-     - name: Copy single file to remote
-       uses: garygrossgarten/github-action-scp@release
-       with:
-          local: test-file
-          remote: /opt/test-file
-          host: 23.23.146.36
-          username: root
-          privateKey: ${{ secrets.AWS_KEY_WOLO }}
+ #   Deploy-dev:
+ #    name: deploy
+ #    runs-on: weartec-runner
+ #    steps:
+ #     - name: copy env files
+ #       run: | 
+ #         whoami
+ #         echo ${{ secrets.ENV_DEV }} > test-file
+ #         docker ps 
+#      - name: Copy single file to remote
+#        uses: garygrossgarten/github-action-scp@release
+#        with:
+#           local: test-file
+#           remote: /opt/test-file
+#           host: 23.23.146.36
+#           username: root
+#           privateKey: ${{ secrets.AWS_KEY_WOLO }}
