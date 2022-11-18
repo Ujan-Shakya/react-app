@@ -24,7 +24,7 @@ jobs:
  #
    Deploy-dev:
     name: deploy
-    runs-on: github-runner
+    runs-on: weartec-runner
     steps:
      - name: copy env files
        run: | 
