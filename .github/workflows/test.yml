@@ -3,7 +3,7 @@ run-name: PipeLine started by ${{ github.actor }}
 on: [push]
 
 env:
-   GITHUB_REPOSITORY: ${{ GITHUB_REPOSITORY }}
+   GITHUB_REPOSITORY: ${{ github_repository }}
 jobs:
   Build-Step:
     name: deploy
