@@ -1,6 +1,6 @@
 name: deploy to development
 run-name: PipeLine started by ${{ github.actor }}
-on:[push]
+on: [push]
 
 jobs:
  #  Build-Step:
