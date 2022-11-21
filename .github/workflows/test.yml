@@ -3,7 +3,7 @@ run-name: PipeLine started by ${{ github.actor }}
 on: [push]
 
 env:
-   GITHUB_REPOSITORY: ${{ github.repository }}
+
    GITHUB_REF_NAME: ${{ github.ref_name }}
 
 jobs:
@@ -12,9 +12,10 @@ jobs:
     runs-on: weartec-runner
     steps:
      - uses: actions/checkout@v2
-     - run: |
-          sudo docker build -t ${{ env.GITHUB_REPOSITORY }}:latest -f Dockerfile-dev .
-          sudo docker images
+     - run: .infra-script/build.sh
+       env:
+          GITHUB_REPOSITORY: ${{ github.repository }}
+
 
   Push-Step:
     name: push
