@@ -17,6 +17,7 @@ jobs:
   Push-Step:
     name: push
     runs-on: weartec-runner
+    needs: Build-Step
     steps:
      - uses: actions/checkout@v2
      - run: .infra-script/push.sh
