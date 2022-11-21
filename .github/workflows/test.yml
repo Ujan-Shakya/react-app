@@ -3,7 +3,7 @@ run-name: PipeLine started by ${{ github.actor }}
 on: [push]
 
 env:
-
+   GITHUB_REPOSITORY: ${{ github.repository }}
    GITHUB_REF_NAME: ${{ github.ref_name }}
 
 jobs:
@@ -13,18 +13,16 @@ jobs:
     steps:
      - uses: actions/checkout@v2
      - run: .infra-script/build.sh
-       env:
-          GITHUB_REPOSITORY: ${{ github.repository }}
-
 
   Push-Step:
     name: push
     runs-on: weartec-runner
     steps:
      - uses: actions/checkout@v2
-     - run: |
-        sudo aws configure set aws_access_key_id "${{ secrets.AWS_ACCESS_KEY_ID }}" && sudo aws configure set aws_secret_access_key "${{ secrets.AWS_SECRET_ACCESS_KEY }}"
-        sudo aws ecr get-login-password --region us-east-1 | sudo docker login --username AWS --password-stdin ${{ secrets.ECR_LOGIN_PASSWORD }}
-        sudo docker tag ${{ env.GITHUB_REPOSITORY }}:latest ${{ secrets.ECR_REPOSITORY_URL }}:${{ env.GITHUB_REF_NAME }}
-        sudo docker push ${{ secrets.ECR_REPOSITORY_URL }}:${{ env.GITHUB_REF_NAME }}
-        sudo docker image prune -f
+     - run: .infra-script/push.sh
+       env:
+        GITHUB_REPOSITORY: ${{ github.repository }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        ECR_LOGIN_PASSWORD: ${{ secrets.ECR_LOGIN_PASSWORD }}
+        ECR_REPOSITORY_URL: ${{ secrets.ECR_REPOSITORY_URL }}
