@@ -1,4 +1,4 @@
-name: build
+name: test
 run-name: PipeLine started by ${{ github.actor }}
 on: [push]
 
@@ -8,7 +8,7 @@ env:
 
 jobs:
   Build-Step:
-    name: deploy
+    name: build
     runs-on: weartec-runner
     steps:
      - uses: actions/checkout@v2
@@ -16,8 +16,9 @@ jobs:
           sudo docker build -t ${{ env.GITHUB_REPOSITORY }}:latest -f Dockerfile-dev .
           sudo docker images
 
+jobs:
   Push-Step:
-    name: deploy
+    name: push
     runs-on: weartec-runner
     steps:
      - uses: actions/checkout@v2
