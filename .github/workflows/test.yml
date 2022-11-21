@@ -16,7 +16,6 @@ jobs:
           sudo docker build -t ${{ env.GITHUB_REPOSITORY }}:latest -f Dockerfile-dev .
           sudo docker images
 
-jobs:
   Push-Step:
     name: push
     runs-on: weartec-runner
