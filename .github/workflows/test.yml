@@ -2,10 +2,6 @@ name: test
 run-name: PipeLine started by ${{ github.actor }}
 on: [push]
 
-env:
-   GITHUB_REPOSITORY: ${{ github.repository }}
-   GITHUB_REF_NAME: ${{ github.ref_name }}
-
 jobs:
   Build-Step:
     name: build
@@ -13,6 +9,8 @@ jobs:
     steps:
      - uses: actions/checkout@v3
      - run: .infra-script/build.sh
+       env:
+        GITHUB_REPOSITORY: ${{ github.repository }}
 
   Push-Step:
     name: push
@@ -27,3 +25,4 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         ECR_LOGIN_PASSWORD: ${{ secrets.ECR_LOGIN_PASSWORD }}
         ECR_REPOSITORY_URL: ${{ secrets.ECR_REPOSITORY_URL }}
+        GITHUB_REF_NAME: ${{ github.ref_name }}
