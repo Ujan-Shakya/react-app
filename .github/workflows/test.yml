@@ -4,11 +4,6 @@ on: [push]
 
 env:
   GITHUB_REPOSITORY: ${{ github.repository }}
-  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-  ECR_LOGIN_PASSWORD: ${{ secrets.ECR_LOGIN_PASSWORD }}
-  ECR_REPOSITORY_URL: ${{ secrets.ECR_REPOSITORY_URL }}
-  GITHUB_REF_NAME: ${{ github.ref_name }}
 
 jobs:
   Build-Step:
@@ -17,6 +12,7 @@ jobs:
     steps:
      - uses: actions/checkout@v3
      - run: .infra-script/build.sh
+       env:
 
   Push-Step:
     name: push
@@ -25,3 +21,9 @@ jobs:
     steps:
      - uses: actions/checkout@v3
      - run: .infra-script/push.sh
+       env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        ECR_LOGIN_PASSWORD: ${{ secrets.ECR_LOGIN_PASSWORD }}
+        ECR_REPOSITORY_URL: ${{ secrets.ECR_REPOSITORY_URL }}
+        GITHUB_REF_NAME: ${{ github.ref_name }}
