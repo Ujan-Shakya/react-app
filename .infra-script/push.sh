@@ -4,7 +4,7 @@ sudo aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID && sudo aws configur
 
 sudo aws ecr get-login-password --region us-east-1 | sudo docker login --username AWS --password-stdin $ECR_LOGIN_PASSWORD
 
-sudo docker tag $GITHUB_REPOSITORY:latest $ECR_REPOSITORY_URL:$GITHUB_REF_NAME
+sudo docker tag :latest $ECR_REPOSITORY_URL:$GITHUB_REF_NAME
 
 sudo docker push $ECR_REPOSITORY_URL:$GITHUB_REF_NAME
 
