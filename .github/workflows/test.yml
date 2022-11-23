@@ -3,6 +3,7 @@ run-name: PipeLine started by ${{ github.actor }}
 on: [push]
 
 env:
+ ENV_DEV: ${{ secrets.ENV_DEV }}
  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
  ECR_LOGIN_PASSWORD: ${{ secrets.ECR_LOGIN_PASSWORD }}
@@ -16,13 +17,17 @@ jobs:
     runs-on: weartec-runner
     steps:
      - uses: actions/checkout@v3
-     - run: .infra-script/build.sh
+     - run: |
+         echo -n $ENV_DEV > .env.development
+         ls
+         cat .env.development
+#        .infra-script/build.sh
 
-  Push-Step:
-    name: push
-    runs-on: weartec-runner
-    needs: Build-Step
-    steps:
-     - uses: actions/checkout@v3
-     - run: .infra-script/push.sh
+#   Push-Step:
+#     name: push
+#     runs-on: weartec-runner
+#     needs: Build-Step
+#     steps:
+#      - uses: actions/checkout@v3
+#      - run: .infra-script/push.sh
 
