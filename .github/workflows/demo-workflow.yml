@@ -9,4 +9,4 @@ jobs:
       - name: Write a multi-line message
         run: |
           echo This is a demo workflow.
-          echo ho very basic and easy-to-understand workflow.
+          echo very basic and easy-to-understand workflow.
