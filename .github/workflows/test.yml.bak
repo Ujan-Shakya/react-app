@@ -1,52 +1,22 @@
-name: deploy to development
+name: Rsync Test
 run-name: PipeLine started by ${{ github.actor }}
 on: push
 
-#jobs:
-#  ssh-test:
-#    name: deploy
-#    runs-on: ubuntu-latest
-#    steps:
-#     - name: copy env files
-#       run: echo ${{ secrets.ENV_DEV }} > test-file
-#     - name: Copy single file to remote
-#       uses: garygrossgarten/github-action-scp@release
-#       with:
-#          local: test-file
-#          remote: /opt/test-file
-#          host: 23.23.146.36
-#          username: root
-#          privateKey: ${{ secrets.AWS_KEY_WOLO }}
-
 jobs:
-#  deploy:
-#    name: rsync
-#    runs-on: ubuntu-latest
-#    steps:
-#    - name: copy env files
-#      run: echo ${{ secrets.ENV_DEV }} > test-file
-#    - uses: actions/checkout@v2
-#    - name: rsync deployment
-#      uses: burnett01/rsync-deployments@5.2.1
-#      with:
-#        switches: -avzr --delete --exclude="" --include="" --filter=""
-#        path: test-file
-#        remote_path: /opt/test-file
-#        remote_host: 23.23.146.36
-#        remote_user: root
-#        remote_key: ${{ secrets.AWS_KEY_WOLO }}
-#
-   ssh-test:
-       name: deploy
-       runs-on: weartec-runner
-       steps:
-         - name: Testing SSH
-           uses: garygrossgarten/github-action-ssh@release
-           with:
-             command: |
-                pwd
-                cd /opt
-                ls -lah
-             host: 23.23.146.36
-             username: ubuntu
-             privateKey: ${{ secrets.AWS_KEY_WOLO }}
+  deploy:
+    name: rsync
+    runs-on: ubuntu-latest
+    steps:
+    - name: copy env files
+      run: echo ${{ secrets.ENV_DEV }} > test-file
+    - uses: actions/checkout@v2
+    - name: rsync deployment
+      uses: burnett01/rsync-deployments@5.2.1
+      with:
+        switches: -avzr --delete
+        path: test-file
+        remote_path: /opt/test-file
+        remote_host: 23.23.146.36
+        remote_user: root
+        remote_key: ${{ secrets.AWS_KEY_WOLO }}
+
