@@ -12,7 +12,7 @@ jobs:
       uses: ./ # Uses an action in the root directory
       id: pokemon
       with:
-        pokemon_id: 150
+        pokemon_id: 99
  
   # Use the pokemon_name output from our action (id:pokemon)
     - uses: actions/checkout@v3
