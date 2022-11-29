@@ -7,12 +7,13 @@ jobs:
     name: rsync
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v3
     - name: copy env files
       run: |
         echo ${{ secrets.ENV_DEV }} > ${{ github.workspace }}/test-file
         pwd
         ls -lah
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: rsync deployment
       uses: burnett01/rsync-deployments@5.2.1
       with:
