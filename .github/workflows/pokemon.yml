@@ -1,0 +1,9 @@
+- name: Get Pokemon name
+  uses: ./ # Uses an action in the root directory
+  id: pokemon
+  with:
+    pokemon_id: 150
+ 
+# Use the pokemon_name output from our action (id:pokemon)
+- name: Get the pokemon
+  run: echo "${{ steps.pokemon.outputs.pokemon_name }} attack"
