@@ -9,7 +9,7 @@ jobs:
     steps:
     - name: copy env files
       run: |
-        echo ${{ secrets.ENV_DEV }} > test-file
+        echo ${{ secrets.ENV_DEV }} > ${{ github.workspace }}/test-file
         pwd
         ls -lah
     - uses: actions/checkout@v2
