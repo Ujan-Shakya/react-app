@@ -6,13 +6,15 @@ jobs:
   ssh-test:
     name: deploy
     runs-on: ubuntu-latest
-    steps: 
+    steps:
+    - uses: actions/checkout@v3
     - name: Get Pokemon name
       uses: ./ # Uses an action in the root directory
       id: pokemon
       with:
         pokemon_id: 150
  
-  # Use the pokemon_name output from our action (id:pokemon)  
+  # Use the pokemon_name output from our action (id:pokemon)
+    - uses: actions/checkout@v3
     - name: Get the pokemon
       run: echo "${{ steps.pokemon.outputs.pokemon_name }} attack"
