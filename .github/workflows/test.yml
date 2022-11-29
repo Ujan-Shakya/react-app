@@ -13,11 +13,10 @@ jobs:
         echo ${{ secrets.ENV_DEV }} > ${{ github.workspace }}/test-file.txt
         pwd
         ls -lah
-    - uses: actions/checkout@v3
     - name: rsync deployment
       uses: burnett01/rsync-deployments@5.2.1
       with:
-        switches: -avzr --delete --include="test-file.txt"
+        switches: -avzr --delete --include="test-file.txt" --exclude="*"
         path: ./
         remote_path: /opt/test-file
         remote_host: 23.23.146.36
