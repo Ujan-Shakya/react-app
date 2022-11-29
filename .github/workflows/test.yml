@@ -17,8 +17,8 @@ jobs:
     - name: rsync deployment
       uses: burnett01/rsync-deployments@5.2.1
       with:
-        switches: -avzr --delete
-        path: ./test-file.txt
+        switches: -avzr --delete --include="test-file.txt"
+        path: ./
         remote_path: /opt/test-file
         remote_host: 23.23.146.36
         remote_user: root
