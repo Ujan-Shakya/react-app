@@ -1,15 +1,18 @@
 name: deploy to development
 run-name: PipeLine started by ${{ github.actor }}
-on:[push]
+on: [push]
 
-name: deploy to development
-run-name: PipeLine started by ${{ github.actor }}
-  - name: Get Pokemon name
-    uses: ./ # Uses an action in the root directory
-    id: pokemon
-    with:
-      pokemon_id: 150
+jobs:
+  ssh-test:
+    name: deploy
+    runs-on: ubuntu-latest
+    steps: 
+    - name: Get Pokemon name
+      uses: ./ # Uses an action in the root directory
+      id: pokemon
+      with:
+        pokemon_id: 150
  
-# Use the pokemon_name output from our action (id:pokemon)  
-  - name: Get the pokemon
-    run: echo "${{ steps.pokemon.outputs.pokemon_name }} attack"
+  # Use the pokemon_name output from our action (id:pokemon)  
+    - name: Get the pokemon
+      run: echo "${{ steps.pokemon.outputs.pokemon_name }} attack"
