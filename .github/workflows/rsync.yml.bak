@@ -1,0 +1,25 @@
+name: Rsync Test
+run-name: PipeLine started by ${{ github.actor }}
+on: push
+
+jobs:
+  deploy:
+    name: rsync
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: copy env files
+      run: |
+        echo ${{ secrets.ENV_DEV }} > ${{ github.workspace }}/test-file.txt
+        pwd
+        ls -lah
+    - name: rsync deployment
+      uses: burnett01/rsync-deployments@5.2.1
+      with:
+        switches: -avzr --delete --include="test-file.txt" --include="Dockerfile-dev" --exclude="*"
+        path: ./
+        remote_path: /opt/test-file
+        remote_host: 23.23.146.36
+        remote_user: root
+        remote_key: ${{ secrets.AWS_KEY_WOLO }}
+
