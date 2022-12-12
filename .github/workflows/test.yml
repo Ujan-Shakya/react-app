@@ -5,12 +5,13 @@ on: push
 jobs:
   deploy:
     name: rsync
-    runs-on: ubuntu-latest
+#   runs-on: ubuntu-latest
     steps:
       - name: Set the value
         id: step_one
         run: |
           echo "action_state=red" >> $GITHUB_ENV
+          echo "${{ env.action_state }}" 
       - name: Use the value
         id: step_two
         run: |
