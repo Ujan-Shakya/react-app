@@ -4,6 +4,7 @@ inputs:
    names:
      required: true
      description: "user named value here"
+     default: ujan
 
 branding:
   icon: 'award'
@@ -13,7 +14,7 @@ runs:
   using: "composite"
   steps:
     - name: test
-      uses: action/checkout@v2
+#     uses: action/checkout@v2
       shell: bash
       run: |
         echo "hello world"
