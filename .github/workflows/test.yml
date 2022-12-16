@@ -2,17 +2,16 @@ name: Test
 run-name: PipeLine started by ${{ github.actor }}
 on: push
 
+branding:
+  icon: 'award'
+  color: 'cyan'
+
 jobs:
   deploy:
-    name: rsync
+    name: test
     runs-on: ubuntu-latest
     steps:
-      - name: Set the value
-        id: step_one
-        run: |
-          echo "action_state=red" >> $GITHUB_ENV
-          echo "${{ env.action_state }}" 
-      - name: Use the value
-        id: step_two
-        run: |
-          echo "${{ env.action_state }}" # This will output 'red'
+      - name: setting the value
+        uses: ./.github/actions/action
+        with:
+           names: ujan
