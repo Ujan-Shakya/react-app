@@ -8,6 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: setting the value
-        uses: ./.github/actions/action
+        uses: ./.github/actions
         with:
            names: ujan
