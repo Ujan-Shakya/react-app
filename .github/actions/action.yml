@@ -12,6 +12,9 @@ branding:
 runs:
   using: "composite"
   steps:
-    - uses: action/checkout@v2
-      run: echo "Value of the name is:  "${{ inputs.names }}
+    - name: test
+      uses: action/checkout@v2
+      run: |
+        echo "hello world"
+        echo "Value of the name is:" ${{ inputs.names }}
 
