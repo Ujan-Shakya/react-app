@@ -2,10 +2,6 @@ name: Test
 run-name: PipeLine started by ${{ github.actor }}
 on: push
 
-branding:
-  icon: 'award'
-  color: 'cyan'
-
 jobs:
   deploy:
     name: test
