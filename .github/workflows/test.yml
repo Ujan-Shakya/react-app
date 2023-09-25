@@ -12,5 +12,5 @@ jobs:
     steps:
       - name: test
         run: |
-          echo ${{secrets.TEST_ENV}} | base > .env.development
+          echo ${{secrets.TEST_ENV}} | base64 -d > .env.development
           cat .env.development
