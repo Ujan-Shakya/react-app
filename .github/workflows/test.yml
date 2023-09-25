@@ -1,0 +1,16 @@
+name: deploy to development
+run-name: PipeLine started by ${{ github.actor }}
+on:
+  pull_request:
+    branches: 
+      - develop
+      
+jobs:
+  test:
+    name: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: test
+        run: |
+          echo ${{secrets.TEST_ENV}} > .env.development
+          echo .env.development
